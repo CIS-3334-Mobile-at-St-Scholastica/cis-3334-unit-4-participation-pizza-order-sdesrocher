@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtTotal;
     TextView txtStatus;
     PizzaOrderInterface pizzaOrderSystem;
+    Spinner spinTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         txtStatus = (TextView) findViewById(R.id.textViewStatus);
 
         pizzaOrderSystem = new PizzaOrder(this);
+        spinTop = (Spinner) findViewById(R.id.spinnerToppings);
     }
 
     @Override
@@ -43,6 +46,12 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     }
 
     public void onClickOrder(View view) {
+        String topping = spinnerToppings.getSelectedItem().toString();
+            Pizza.pizzaSize size;
+                if (strSize.equalsIgnoreCase("small"))
+                    size = Pizza.pizzaSize
+
+
         String orderDescription = pizzaOrderSystem.OrderPizza("Pepperoni","Large", false);
         //display a pop up message for a long period of time
         Toast.makeText(getApplicationContext(), "You have ordered a "+orderDescription , Toast.LENGTH_LONG).show();
