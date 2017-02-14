@@ -43,10 +43,10 @@ public class PizzaOrder implements PizzaOrderInterface {
     public Double getTotalBill() {
         Double total = 0.0;
         for (Pizza p:pizzasInOrder ){
-            total += p.getPrice();
+            total = p.getPrice();
         }
         if (delivery) {
-            total += DELIVERY_PRICE;
+            total = DELIVERY_PRICE;
         }
         return total;
     }

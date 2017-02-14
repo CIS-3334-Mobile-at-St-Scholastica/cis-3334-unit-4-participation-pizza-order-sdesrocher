@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtStatus;
     PizzaOrderInterface pizzaOrderSystem;
     Spinner spinTop;
+    String size="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +48,24 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     }
 
     public void onClickOrder(View view) {
-        String topping = spinnerToppings.getSelectedItem().toString();
-            Pizza.pizzaSize size;
-                if (strSize.equalsIgnoreCase("small"))
-                    size = Pizza.pizzaSize
+        boolean cheese = false;
 
+        String topping = spinTop.getSelectedItem().toString();
+        if (rbSmall.isChecked()) {
+            size = "small";
+        } else if(rbMedium.isChecked()){
+            size = "medium";
+        }else if(rbLarge.isChecked()){
+            size = "large";
+        }else{
+            txtTotal.setText("Select size");
+        }
 
-        String orderDescription = pizzaOrderSystem.OrderPizza("Pepperoni","Large", false);
+        if (chkbxCheese.isChecked()){
+            cheese = true;
+        }
+
+        String orderDescription = pizzaOrderSystem.OrderPizza(topping,size, cheese);
         //display a pop up message for a long period of time
         Toast.makeText(getApplicationContext(), "You have ordered a "+orderDescription , Toast.LENGTH_LONG).show();
         txtTotal.setText("Total Due: " + pizzaOrderSystem.getTotalBill().toString());

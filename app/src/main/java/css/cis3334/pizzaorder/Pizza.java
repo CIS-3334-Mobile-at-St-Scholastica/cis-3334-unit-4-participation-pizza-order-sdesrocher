@@ -2,6 +2,7 @@ package css.cis3334.pizzaorder;
 
 /**
  * Created by tgibbons on 2/10/2017.
+ * Edited by Sara Desrocher 2/13/17
  */
 public class Pizza {
     public enum pizzaSize { SMALL, MEDIUM, LARGE};
